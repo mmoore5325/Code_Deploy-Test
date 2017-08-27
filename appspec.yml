@@ -1,0 +1,23 @@
+version: 0.0
+os: linux
+files:
+  - source: /.
+    destination: /var/www/html/
+permissions:
+   - object: scripts/rubystuff
+     mode: 644
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: 
+  ApplicationStop:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: 
+  ApplicationStart:
+    - location: scripts/rubystuff/rackup.sh
+      timeout: 300
+      runas:
+   
+
