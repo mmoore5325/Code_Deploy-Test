@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+pkill -f 'ruby app.rb'
+
+
+#!/bin/bash
+
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   TARGET="$(readlink "$SOURCE")"
@@ -19,5 +25,11 @@ if [ "$DIR" != "$RDIR" ]; then
   echo "DIR '$RDIR' resolves to '$DIR'"
 fi
 echo "DIR is '$DIR'"
- 
-sudo ruby "$DIR"/app.rb
+
+result=$(curl -s http://localhost:4567)
+
+if [[ "$result" =~ 'mike sucks' ]]; then
+    exit 0
+else
+    exit 1
+fi

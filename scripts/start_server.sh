@@ -20,4 +20,4 @@ if [ "$DIR" != "$RDIR" ]; then
 fi
 echo "DIR is '$DIR'"
  
-sudo ruby "$DIR"/app.rb
+ruby "$DIR"/rubystuff/app.rb

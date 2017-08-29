@@ -7,17 +7,14 @@ permissions:
    - object: scripts/rubystuff
      mode: 644
 hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies
-      timeout: 300
-      runas: 
   ApplicationStop:
-    - location: scripts/install_dependencies
-      timeout: 300
-      runas: 
+    - location: scripts/stop_server.sh
+      timeout: 
+      runas: root
   ApplicationStart:
-    - location: scripts/rubystuff/rackup.sh
-      timeout: 300
+    - location: scripts/start_server.sh
+      timeout: 10
       runas:
+ 
    
 
